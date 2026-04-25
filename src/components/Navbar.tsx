@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 
 function cx(isActive: boolean) {
   return {
@@ -19,61 +20,42 @@ function cx(isActive: boolean) {
 }
 
 export function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const location = useLocation()
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [location.pathname])
+
   return (
-    <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 20,
-        backdropFilter: 'blur(10px)',
-        background: 'rgba(11,16,32,0.65)',
-        borderBottom: '1px solid rgba(255,255,255,0.10)',
-      }}
-    >
-      <div
-        className="container"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '14px 0',
-          gap: 14,
-        }}
-      >
+    <header className="siteHeader">
+      <div className="container navRow">
         <NavLink to="/" style={{ textDecoration: 'none' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div
-              aria-hidden="true"
-              style={{
-                width: 34,
-                height: 34,
-                borderRadius: 12,
-                background:
-                  'linear-gradient(135deg, rgba(236,72,153,0.95), rgba(139,92,246,0.9))',
-                boxShadow: '0 14px 40px rgba(0,0,0,0.35)',
-                border: '1px solid rgba(255,255,255,0.16)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 14,
-                fontWeight: 800,
-                color: 'rgba(255,255,255,0.96)',
-              }}
-            >
+          <div className="brandBlock">
+            <div aria-hidden="true" className="brandIcon">
               UK
             </div>
-            <div style={{ lineHeight: 1.05 }}>
-              <div style={{ color: 'rgba(255,255,255,0.96)', fontWeight: 800 }}>
-                Udhayakiran M G
-              </div>
-              <div style={{ color: 'rgba(255,255,255,0.60)', fontSize: 13 }}>
-                Frontend Developer
-              </div>
+            <div className="brandText">
+              <div className="brandName">Udhayakiran M G</div>
+              <div className="brandRole">Frontend Developer</div>
             </div>
           </div>
         </NavLink>
 
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+        <button
+          type="button"
+          className="menuToggle"
+          aria-expanded={isMenuOpen}
+          aria-controls="site-nav"
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          onClick={() => setIsMenuOpen((v) => !v)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <nav id="site-nav" className={`siteNav ${isMenuOpen ? 'open' : ''}`}>
           <NavLink to="/" style={({ isActive }) => cx(isActive)}>
             Home
           </NavLink>

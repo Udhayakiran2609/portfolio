@@ -86,6 +86,10 @@ a {
 }
 
 @media (max-width: 900px) {
+  .container {
+    max-width: calc(100% - 24px);
+  }
+
   .splitHero {
     grid-template-columns: 1fr;
   }
@@ -127,6 +131,20 @@ a {
 }
 
 @media (max-width: 720px) {
+  .page {
+    padding: 20px 0 42px;
+  }
+
+  .headline {
+    font-size: clamp(28px, 8.2vw, 38px);
+    line-height: 1.12;
+  }
+
+  .subhead {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
   .formGrid {
     grid-template-columns: 1fr;
   }

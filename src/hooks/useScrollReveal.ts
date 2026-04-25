@@ -30,7 +30,7 @@ export function useScrollReveal(
     const ctx = gsap.context(() => {
       const targets = gsap.utils.toArray<HTMLElement>('[data-reveal]')
 
-      targets.forEach((el) => {
+      targets.forEach((el, idx) => {
         gsap.fromTo(
           el,
           { autoAlpha: 0, y, filter: 'blur(6px)' },
@@ -39,6 +39,7 @@ export function useScrollReveal(
             y: 0,
             filter: 'blur(0px)',
             duration,
+            delay: Math.min(idx * 0.04, 0.22),
             ease: 'power2.out',
             overwrite: 'auto',
             scrollTrigger: {

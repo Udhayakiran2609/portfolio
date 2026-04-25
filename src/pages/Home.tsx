@@ -29,10 +29,7 @@ export function Home() {
               projects, learn about me, or send a message.
             </p>
 
-            <div
-              style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 18 }}
-              data-reveal
-            >
+            <div className="heroActions" data-reveal>
               <Link
                 to="/projects"
                 className="btn primary"
@@ -46,7 +43,7 @@ export function Home() {
             </div>
           </section>
 
-          <aside className="avatarWrap" data-reveal>
+          <aside className="avatarWrap heroAvatar" data-reveal>
             <img className="avatar" src={profileImg} alt="Udhayakiran M G" loading="lazy" />
           </aside>
         </div>
@@ -57,25 +54,25 @@ export function Home() {
               <h2>What I do</h2>
             </div>
             <div className="grid">
-              <div className="card" style={{ gridColumn: 'span 6' }} data-reveal>
+              <div className="card serviceCard" style={{ gridColumn: 'span 6' }} data-reveal>
                 <h3>Desktop Applications</h3>
                 <p className="muted">
                   Cross-platform desktop apps built with Electron.js for seamless user experiences.
                 </p>
               </div>
-              <div className="card" style={{ gridColumn: 'span 6' }} data-reveal>
+              <div className="card serviceCard" style={{ gridColumn: 'span 6' }} data-reveal>
                 <h3>Browser Extensions</h3>
                 <p className="muted">
                   Extensions for Chrome, Firefox, and Safari with robust APIs and smooth performance.
                 </p>
               </div>
-              <div className="card" style={{ gridColumn: 'span 6' }} data-reveal>
+              <div className="card serviceCard" style={{ gridColumn: 'span 6' }} data-reveal>
                 <h3>Web Applications</h3>
                 <p className="muted">
                   Modern web apps built with Angular and React for responsive, interactive interfaces.
                 </p>
               </div>
-              <div className="card" style={{ gridColumn: 'span 6' }} data-reveal>
+              <div className="card serviceCard" style={{ gridColumn: 'span 6' }} data-reveal>
                 <h3>Backend Development</h3>
                 <p className="muted">Laravel, PHP, and SQL for robust server-side solutions and APIs.</p>
               </div>
@@ -94,7 +91,7 @@ export function Home() {
                 <Link
                   key={p.slug}
                   to={`/projects/${p.slug}`}
-                  className="card"
+                  className="card interactiveCard"
                   data-reveal
                   style={{
                     textDecoration: 'none',
@@ -117,7 +114,7 @@ export function Home() {
         </div>
 
         <div style={{ marginTop: 18 }} className="grid">
-          <section className="card" style={{ gridColumn: 'span 7' }} data-reveal>
+          <section className="card skillsSection" style={{ gridColumn: 'span 7' }} data-reveal>
             <div className="sectionTitle">
               <h2>Skills snapshot</h2>
             </div>
@@ -147,16 +144,16 @@ export function Home() {
             </div>
           </section>
 
-          <aside className="card" style={{ gridColumn: 'span 5' }} data-reveal>
+          <aside className="card statsSection" style={{ gridColumn: 'span 5' }} data-reveal>
             <div className="sectionTitle">
               <h2>Stats</h2>
             </div>
             <div className="grid">
-              <div className="card" style={{ gridColumn: 'span 6' }}>
+              <div className="card statCard" style={{ gridColumn: 'span 6' }}>
                 <h3 style={{ marginBottom: 6 }}>8</h3>
                 <p className="muted">Projects built</p>
               </div>
-              <div className="card" style={{ gridColumn: 'span 6' }}>
+              <div className="card statCard" style={{ gridColumn: 'span 6' }}>
                 <h3 style={{ marginBottom: 6 }}>2.2</h3>
                 <p className="muted">Years experience</p>
               </div>
@@ -170,7 +167,7 @@ export function Home() {
           </div>
 
           <div className="grid">
-            <div className="card" style={{ gridColumn: 'span 12' }}>
+            <div className="card workCard" style={{ gridColumn: 'span 12' }}>
               <div
                 style={{
                   display: 'flex',
@@ -186,7 +183,7 @@ export function Home() {
                 <span className="chip">Feb 2024 – Mar 2026</span>
               </div>
 
-              <ul style={{ margin: '10px 0 0', paddingLeft: 18, color: 'rgba(255,255,255,0.78)' }}>
+              <ul className="workList" style={{ margin: '10px 0 0', paddingLeft: 18, color: 'rgba(255,255,255,0.78)' }}>
                 <li style={{ marginBottom: 10 }}>
                   Joined as a trainee on <strong style={{ color: 'rgba(255,255,255,0.92)' }}>Sep 25, 2023</strong> and
                   officially onboarded as full‑time in <strong style={{ color: 'rgba(255,255,255,0.92)' }}>Feb 2024</strong>.

@@ -14,6 +14,86 @@
     border-color 120ms ease;
 }
 
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  background: rgba(11, 16, 32, 0.65);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  gap: 14px;
+}
+
+.brandBlock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brandIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.95), rgba(139, 92, 246, 0.9));
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.brandText {
+  line-height: 1.05;
+}
+
+.brandName {
+  color: rgba(255, 255, 255, 0.96);
+  font-weight: 800;
+}
+
+.brandRole {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+}
+
+.siteNav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.menuToggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menuToggle span {
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
 .btn:hover {
   transform: translateY(-1px);
   border-color: color-mix(in oklab, var(--border) 60%, var(--accent) 40%);
@@ -53,6 +133,11 @@
   border-radius: 16px;
   padding: 18px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
 }
 
 .card h3 {
@@ -96,6 +181,10 @@
   overflow: hidden;
 }
 
+.heroAvatar {
+  animation: floaty 5.6s ease-in-out infinite;
+}
+
 .avatarWrap::before {
   content: none;
 }
@@ -118,8 +207,134 @@
   margin-top: 18px;
 }
 
+.heroActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.interactiveCard:hover,
+.serviceCard:hover,
+.statCard:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--border) 65%, var(--accent) 35%);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.26);
+}
+
+.workList li {
+  transition: transform 180ms ease;
+}
+
+.workList li:hover {
+  transform: translateX(4px);
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 @media (max-width: 900px) {
   .twoCol {
     grid-template-columns: 1fr;
+  }
+
+  .avatarWrap {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .brandRole {
+    display: none;
+  }
+
+  .menuToggle {
+    display: inline-flex;
+  }
+
+  .siteNav {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: calc(100% + 10px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(11, 16, 32, 0.96);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(10px);
+    padding: 12px;
+    display: grid;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease,
+      visibility 180ms ease;
+  }
+
+  .navRow {
+    position: relative;
+  }
+
+  .siteNav.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .siteNav > a,
+  .siteNav > .btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .sectionTitle {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .grid > .serviceCard,
+  .grid > .statCard,
+  .grid > .skillsSection,
+  .grid > .statsSection {
+    grid-column: span 12 !important;
+  }
+
+  .heroActions .btn {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .chip {
+    font-size: 13px;
+    padding: 6px 9px;
+  }
+
+  .sectionTitle h2 {
+    font-size: 20px;
   }
 }
